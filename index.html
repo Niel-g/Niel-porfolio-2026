@@ -8,7 +8,7 @@
   <meta name="author" content="Joebeniel Niel Ayes" />
 
   <title>Niel Ayes — Visual Storyteller &amp; Film Editor</title>
-    <link rel="icon" type="image/png" href="assets/images/1 Transparent.png" />
+  <link rel="icon" type="image/png" href="assets/images/1 Transparent.png" />
   <link rel="apple-touch-icon" href="assets/images/1 Transparent.png" />
 
   <!-- ==================== FONTS ==================== -->
@@ -117,6 +117,84 @@
       color: #A1A1AA;
       margin: 0 1.5rem;
     }
+
+    /* Replaces the invalid Tailwind class "scale-x-140" (hero) */
+    @media (min-width: 1024px) {
+      .hero-stretch {
+        transform: scaleX(1.4);
+        transform-origin: center;
+      }
+    }
+
+    /* ==================== CONTACT SECTION (scoped) ==================== */
+    #contact .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 20px;
+      align-items: stretch;
+      text-align: left;
+    }
+    @media (max-width: 767px) {
+      #contact .contact-grid { grid-template-columns: minmax(0, 1fr); }
+    }
+
+    #contact .contact-card {
+      grid-column: auto !important;
+      grid-row: auto !important;
+      transform: none !important;
+      margin: 0 !important;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 20px;
+      min-height: 170px;
+      padding: 1.5rem;
+      background: #0B0B0B;
+      border: 1px solid #1F1F1F;
+      border-radius: 1.25rem;
+      transition: border-color 0.3s ease;
+    }
+    #contact .contact-card:hover { border-color: rgba(217, 119, 6, 0.45); }
+
+    #contact .contact-label {
+      display: block;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #737373;
+      margin-bottom: 6px;
+    }
+    #contact .contact-value {
+      display: block;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 1rem;
+      color: #F5F5F5;
+      overflow-wrap: anywhere;
+      text-decoration: none;
+    }
+    #contact a.contact-value:hover { color: #D97706; }
+
+    #contact .contact-btn {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      padding: 0.65rem 1rem;
+      background: #111111;
+      border: 1px solid #1F1F1F;
+      border-radius: 9999px;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.875rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #A1A1AA;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.25s ease;
+    }
+    #contact .contact-btn:hover { background: #1c1c1c; color: #fff; border-color: #D97706; }
+    #contact .contact-btn svg { width: 16px; height: 16px; color: #D97706; flex-shrink: 0; }
   </style>
 </head>
 
@@ -137,10 +215,10 @@
 
       <!-- Desktop Nav -->
       <nav class="hidden md:flex items-center gap-8 text-sm font-mono uppercase tracking-[0.18em] text-secondaryText" aria-label="Main Navigation">
-        <a class="hover:text-primaryText hover:text-accent transition-colors" href="#manipulation">Manipulation</a>
-        <a class="hover:text-primaryText hover:text-accent transition-colors" href="#photography">Photography</a>
-        <a class="hover:text-primaryText hover:text-accent transition-colors" href="#video">Video Reel</a>
-        <a class="hover:text-primaryText hover:text-accent transition-colors" href="#about">About</a>
+        <a class="hover:text-accent transition-colors" href="#manipulation">Manipulation</a>
+        <a class="hover:text-accent transition-colors" href="#photography">Photography</a>
+        <a class="hover:text-accent transition-colors" href="#video">Video Reel</a>
+        <a class="hover:text-accent transition-colors" href="#about">About</a>
         <a class="text-primaryText hover:text-accent transition-colors border border-bordercol px-5 py-2.5 rounded-full hover:border-accent" href="#contact">Contact</a>
       </nav>
 
@@ -175,8 +253,10 @@
 
       <!-- Layer 1: Massive Background Text -->
       <div class="hero-bg-text select-none">
-        <span class="hero-stroke-text block">HI, I'M NIEL</span>
-        <span class="text-neutral-800/80 block text-4xl sm:text-7xl lg:text-9xl -mt-3 sm:-mt-6 tracking-normal">VISUAL STORYTELLER</span>
+        <span class="hero-stroke-text block">HELLO, I'M NIEL</span>
+        <span class="hero-stretch text-neutral-800/80 block text-4xl sm:text-7xl lg:text-9xl -mt-3 sm:-mt-6 tracking-normal">
+          CREATIVE ARTIST
+        </span>
       </div>
 
       <!-- Layer 2 & 3: Interactive Cutout Portrait & Micro Pill Content -->
@@ -205,11 +285,11 @@
 
         <!-- Floating Minimalist Badges & Actions -->
         <div class="z-20 flex flex-col sm:flex-row items-center gap-4 sm:gap-6 pt-4">
-         <div class="text-sm font-mono uppercase tracking-widest text-secondaryText flex items-center gap-2">
-            <span>Creative Artist</span>
+          <div class="text-xl font-mono uppercase tracking-widest text-secondaryText flex items-center gap-2">
+            <span>CRAFTING VISUAL STORIES</span>
           </div>
 
-          <a class="px-7 py-3 rounded-full bg-accent hover:bg-[#b86200] text-black text-sm font-heading font-semibold uppercase tracking-wider transition-transform hover:scale-105" href="#contact">
+          <a class="inline-block text-sm font-heading font-semibold uppercase tracking-wider text-accent transition-all duration-300 hover:scale-105 hover:text-[#b86200]" href="#contact">
             Get In Touch ↗
           </a>
         </div>
@@ -247,7 +327,7 @@
         <!-- Section Header -->
         <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-bordercol pb-6">
           <div>
-            <span class="font-mono text-sm uppercase tracking-[0.22em] text-accent">01 // DIGITAL ART &amp; COMPOSITION</span>
+            <span class="font-mono text-sm uppercase tracking-[0.22em] text-accent">DIGITAL ART &amp; COMPOSITION</span>
             <h2 class="font-display text-6xl sm:text-7xl lg:text-8xl font-normal tracking-wide text-primaryText uppercase mt-1">
               PHOTO MANIPULATION
             </h2>
@@ -272,7 +352,7 @@
         <!-- Section Header -->
         <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-bordercol pb-6">
           <div>
-            <span class="font-mono text-sm uppercase tracking-[0.22em] text-accent">02 // 35MM &amp; 50MM EXPOSURES</span>
+            <span class="font-mono text-sm uppercase tracking-[0.22em] text-accent">CANDID CHRONICLES</span>
             <h2 class="font-display text-6xl sm:text-7xl lg:text-8xl font-normal tracking-wide text-primaryText uppercase mt-1">
               PHOTOGRAPHY
             </h2>
@@ -299,7 +379,7 @@
         <!-- Section Header -->
         <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-bordercol pb-6">
           <div>
-            <span class="font-mono text-sm uppercase tracking-[0.22em] text-accent">03 // MOTION CUTS &amp; REELS</span>
+            <span class="font-mono text-sm uppercase tracking-[0.22em] text-accent">REELS & FRAGMENTS</span>
             <h2 class="font-display text-6xl sm:text-7xl lg:text-8xl font-normal tracking-wide text-primaryText uppercase mt-1">
               VIDEO OUTPUTS
             </h2>
@@ -350,7 +430,7 @@
             <!-- Video 2 -->
             <div
               class="bento-card cursor-pointer group"
-              data-video-id="YOUR_YOUTUBE_VIDEO_ID_HERE"
+              data-video-id="45t0cTQ20W4"
               onclick="openVideoModal(this)"
             >
               <div class="relative aspect-video bg-card overflow-hidden flex items-center justify-center">
@@ -358,7 +438,7 @@
                   alt="Video thumbnail"
                   class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   onerror="handleImgError(this)"
-                  src="assets/videos/video-2.jpg"
+                  src="assets/videos/t2.png"
                 />
                 <div class="hidden absolute inset-0 bg-surface" data-fallback="true"></div>
                 <div class="absolute inset-0 bg-black/40 flex items-center justify-center group-hover:bg-black/20 transition-all">
@@ -378,7 +458,7 @@
             <!-- Video 3 -->
             <div
               class="bento-card cursor-pointer group"
-              data-video-id="YOUR_YOUTUBE_VIDEO_ID_HERE"
+              data-video-id="el80wR4Dd6c"
               onclick="openVideoModal(this)"
             >
               <div class="relative aspect-video bg-card overflow-hidden flex items-center justify-center">
@@ -386,7 +466,7 @@
                   alt="Video thumbnail"
                   class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   onerror="handleImgError(this)"
-                  src="assets/videos/video-3.jpg"
+                  src="assets/videos/t3.png"
                 />
                 <div class="hidden absolute inset-0 bg-surface" data-fallback="true"></div>
                 <div class="absolute inset-0 bg-black/40 flex items-center justify-center group-hover:bg-black/20 transition-all">
@@ -423,16 +503,20 @@
             ABOUT<br />
             <span class="text-primaryText">NIEL</span>
           </h2>
-          <p class="font-mono text-sm text-secondaryText">Visual Storyteller • Director • Colorist</p>
+          <ul class="font-mono text-sm text-secondaryText uppercase tracking-wider space-y-1">
+            <li>Audience Retention Editor</li>
+            <li>Visual Storyteller</li>
+            <li>Designer</li>
+          </ul>
         </div>
 
         <!-- Right: Focused Bio Card -->
         <div class="lg:col-span-7 bento-card p-8 sm:p-12 space-y-6">
           <p class="font-heading text-2xl sm:text-3xl text-primaryText font-light leading-relaxed">
-            I craft compelling visual narratives through photo manipulation, documentary and portrait photography, and rhythmic video editing.
+            PHOTOGRAPHY, PHOTO MANIPULATION, AND VIDEO EDITING FOR CAMPAIGNS AND SOCIALS.
           </p>
           <p class="text-base sm:text-lg text-secondaryText font-light leading-relaxed">
-            Every frame is built with deliberate pacing, natural shadow control, and cinematic color harmony. Combining technical precision with intuitive feeling to deliver visuals that stay with your audience.
+            I DELIVER POLISHED VISUALS WITH STRONG STORY, CLEAN RETOUCHING, AND CONSISTENT COLOR GRADING SO YOUR BRAND OR PROJECT LOOKS UNIFIED AND PROFESSIONAL.
           </p>
           <div class="pt-4 border-t border-bordercol flex flex-wrap gap-8 font-mono text-sm text-secondaryText">
             <div><span class="text-neutral-600 uppercase block text-xs">Location</span><span class="text-primaryText">Philippines</span></div>
@@ -445,7 +529,7 @@
     </section>
 
     <!-- ========================================================== -->
-    <!-- CONTACT SECTION (Clean Minimalist Direct Action)           -->
+    <!-- CONTACT SECTION (Self-contained, scoped styles)            -->
     <!-- ========================================================== -->
     <section class="py-28 sm:py-36 px-6 sm:px-12 border-t border-bordercol bg-obsidian" id="contact">
       <div class="max-w-[1000px] mx-auto text-center space-y-12">
@@ -456,49 +540,51 @@
             LET'S CREATE<br />
             <span class="text-accent">SOMETHING MEANINGFUL</span>
           </h2>
-          <p class="text-base sm:text-lg text-secondaryText font-light max-w-xl mx-auto leading-relaxed pt-2">
-            Available for photo manipulation concepts, brand visual campaigns, and video editing commissions.
+          <p class="w-full mx-auto pt-2 text-center text-base sm:text-lg text-secondaryText font-light">
+            Available for photo manipulation concepts and video editing commissions.
           </p>
         </div>
 
-        <!-- 3 Minimalist Action Cards -->
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-5 text-left">
+        <!-- 3 Contact Cards -->
+        <div class="contact-grid">
 
           <!-- Phone -->
-          <div class="bento-card p-6 flex flex-col justify-between space-y-4">
+          <div class="contact-card">
             <div>
-              <span class="font-mono text-xs text-neutral-500 uppercase tracking-widest block">Phone</span>
-              <span class="font-mono text-base text-primaryText">+63 993 907 3410</span>
+              <span class="contact-label">Phone</span>
+              <a class="contact-value" href="tel:+639939073410">+63 993 907 3410</a>
             </div>
-            <button class="px-4 py-2.5 rounded-full bg-card hover:bg-neutral-800 border border-bordercol text-sm font-mono uppercase tracking-wider text-secondaryText hover:text-white flex items-center justify-between" onclick="copyContact('+639939073410', this)">
-              <span>Copy</span><span class="text-accent">⎘</span>
+            <button type="button" class="contact-btn" onclick="copyContactSafe('+639939073410', this)">
+              <span class="btn-label">Copy</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V6a2 2 0 0 1 2-2h9"></path></svg>
             </button>
           </div>
 
           <!-- Email -->
-          <div class="bento-card p-6 flex flex-col justify-between space-y-4">
+          <div class="contact-card">
             <div>
-              <span class="font-mono text-xs text-neutral-500 uppercase tracking-widest block">Email</span>
-              <span class="font-mono text-base text-primaryText truncate block">createsniel@gmail.com</span>
+              <span class="contact-label">Email</span>
+              <a class="contact-value" href="mailto:createsniel@gmail.com">createsniel@gmail.com</a>
             </div>
-            <button class="px-4 py-2.5 rounded-full bg-card hover:bg-neutral-800 border border-bordercol text-sm font-mono uppercase tracking-wider text-secondaryText hover:text-white flex items-center justify-between" onclick="copyContact('[your email]', this)">
-              <span>Copy</span><span class="text-accent">⎘</span>
+            <button type="button" class="contact-btn" onclick="copyContactSafe('createsniel@gmail.com', this)">
+              <span class="btn-label">Copy</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V6a2 2 0 0 1 2-2h9"></path></svg>
             </button>
           </div>
 
-          <!-- Archive Site -->
-          <div class="bento-card p-6 flex flex-col justify-between space-y-4">
+          <!-- Google Site -->
+          <div class="contact-card">
             <div>
-              <span class="font-mono text-xs text-neutral-500 uppercase tracking-widest block">Google Site</span>
-              <span class="font-mono text-sm text-primaryText truncate block">sites.google.com/view/ayesjoebeniel</span>
+              <span class="contact-label">Google Site</span>
+              <a class="contact-value" href="https://sites.google.com/view/ayesjoebeniel" target="_blank" rel="noopener noreferrer">sites.google.com/view/ayesjoebeniel</a>
             </div>
-            <a class="px-4 py-2.5 rounded-full bg-card hover:bg-neutral-800 border border-bordercol text-sm font-mono uppercase tracking-wider text-secondaryText hover:text-white flex items-center justify-between" href="https://sites.google.com/view/ayesjoebeniel" rel="noopener noreferrer" target="_blank">
-              <span>Visit</span><span class="text-accent">↗</span>
+            <a class="contact-btn" href="https://sites.google.com/view/ayesjoebeniel" target="_blank" rel="noopener noreferrer">
+              <span>Visit</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"></path><path d="M8 7h9v9"></path></svg>
             </a>
           </div>
 
         </div>
-
       </div>
     </section>
 
@@ -554,6 +640,40 @@
   <script src="js/main.js"></script>
 
   <!-- ============================================================ -->
+  <!-- CONTACT COPY FUNCTION (independent of main.js)               -->
+  <!-- ============================================================ -->
+  <script>
+    function copyContactSafe(text, btn) {
+      var label = btn.querySelector('.btn-label');
+      var original = label ? label.textContent : '';
+
+      function done() {
+        if (label) {
+          label.textContent = 'Copied!';
+          setTimeout(function () { label.textContent = original; }, 1500);
+        }
+      }
+      function fallback() {
+        var ta = document.createElement('textarea');
+        ta.value = text;
+        ta.style.position = 'fixed';
+        ta.style.opacity = '0';
+        document.body.appendChild(ta);
+        ta.select();
+        try { document.execCommand('copy'); } catch (e) {}
+        document.body.removeChild(ta);
+        done();
+      }
+
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(text).then(done).catch(fallback);
+      } else {
+        fallback();
+      }
+    }
+  </script>
+
+  <!-- ============================================================ -->
   <!-- WIDE PHOTO WALL                                              -->
   <!-- To add a photo: put the file in its assets folder, then add  -->
   <!-- its path to the list below. Any shape fits automatically and -->
@@ -586,6 +706,7 @@
           targetHeight: 210,
           grayscale: true,
           photos: [
+            'assets/photography/Rider 2.png',
             'assets/photography/1.png',
             'assets/photography/2.png',
             'assets/photography/3.png',
@@ -593,12 +714,13 @@
             'assets/photography/Brown Birds-2.png',
             'assets/photography/Brown Birds-3.png',
             'assets/photography/enc-12.png',
-            'assets/photography/enc-14.png',
-            'assets/photography/enc-15.png',
             'assets/photography/ran 1.png',
             'assets/photography/ran 2.png',
+            'assets/photography/enc-14.png',
             'assets/photography/ran 3.png',
-            'assets/photography/ran 3 L.png'
+            'assets/photography/ran 3 L.png',
+            'assets/photography/enc-15.png',
+            'assets/photography/pantalan.png',
           ]
         }
       };
