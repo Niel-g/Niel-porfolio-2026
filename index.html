@@ -8,6 +8,8 @@
   <meta name="author" content="Joebeniel Niel Ayes" />
 
   <title>Niel Ayes — Visual Storyteller &amp; Film Editor</title>
+    <link rel="icon" type="image/png" href="assets/images/1 Transparent.png" />
+  <link rel="apple-touch-icon" href="assets/images/1 Transparent.png" />
 
   <!-- ==================== FONTS ==================== -->
   <link href="https://fonts.googleapis.com" rel="preconnect" />
@@ -131,7 +133,6 @@
         <span class="font-display text-3xl sm:text-4xl tracking-wider text-primaryText group-hover:text-accent transition-colors">
           NIEL AYES
         </span>
-        <span class="w-2 h-2 rounded-full bg-accent inline-block"></span>
       </a>
 
       <!-- Desktop Nav -->
@@ -205,7 +206,6 @@
         <!-- Floating Minimalist Badges & Actions -->
         <div class="z-20 flex flex-col sm:flex-row items-center gap-4 sm:gap-6 pt-4">
           <div class="px-6 py-3 rounded-full bg-surface/90 border border-bordercol backdrop-blur-md text-sm font-mono uppercase tracking-widest text-secondaryText flex items-center gap-2">
-            <span class="w-2 h-2 rounded-full bg-accent animate-pulse"></span>
             <span>PHOTO MANIPULATION • CAMERA • COLOR GRADE</span>
           </div>
 
@@ -223,18 +223,18 @@
     <!-- ========================================================== -->
     <div class="py-4 border-y border-bordercol bg-surface overflow-hidden select-none" aria-hidden="true">
       <div class="ticker-strip flex gap-8 items-center text-sm font-mono uppercase tracking-[0.2em] text-neutral-400">
-        <span>PHOTO MANIPULATION</span><span class="text-accent">✦</span>
-        <span>CINEMATIC STILLS</span><span class="text-accent">✦</span>
-        <span>4K VIDEO CUTS</span><span class="text-accent">✦</span>
-        <span>DAVINCI RESOLVE</span><span class="text-accent">✦</span>
-        <span>VISUAL STORYTELLING</span><span class="text-accent">✦</span>
-        <span>PHOTO RETOUCHING</span><span class="text-accent">✦</span>
-        <span>PHOTO MANIPULATION</span><span class="text-accent">✦</span>
-        <span>CINEMATIC STILLS</span><span class="text-accent">✦</span>
-        <span>4K VIDEO CUTS</span><span class="text-accent">✦</span>
-        <span>DAVINCI RESOLVE</span><span class="text-accent">✦</span>
-        <span>VISUAL STORYTELLING</span><span class="text-accent">✦</span>
-        <span>PHOTO RETOUCHING</span><span class="text-accent">✦</span>
+        <span>PHOTO MANIPULATION</span><span class="text-accent">|</span>
+        <span>CINEMATIC STILLS</span><span class="text-accent">|</span>
+        <span>4K VIDEO CUTS</span><span class="text-accent">|</span>
+        <span>DAVINCI RESOLVE</span><span class="text-accent">|</span>
+        <span>VISUAL STORYTELLING</span><span class="text-accent">|</span>
+        <span>PHOTO RETOUCHING</span><span class="text-accent">|</span>
+        <span>PHOTO MANIPULATION</span><span class="text-accent">|</span>
+        <span>CINEMATIC STILLS</span><span class="text-accent">|</span>
+        <span>4K VIDEO CUTS</span><span class="text-accent">|</span>
+        <span>DAVINCI RESOLVE</span><span class="text-accent">|</span>
+        <span>VISUAL STORYTELLING</span><span class="text-accent">|</span>
+        <span>PHOTO RETOUCHING</span><span class="text-accent">|</span>
       </div>
     </div>
 
@@ -290,6 +290,8 @@
 
     <!-- ========================================================== -->
     <!-- PILLAR 03 // VIDEO OUTPUTS (YouTube Unlisted Player)       -->
+    <!-- All text below is empty on purpose. Type your own titles   -->
+    <!-- and details where you see "TYPE HERE".                     -->
     <!-- ========================================================== -->
     <section class="py-24 sm:py-32 px-6 sm:px-12 border-t border-bordercol" id="video">
       <div class="max-w-[1300px] mx-auto space-y-12">
@@ -302,9 +304,8 @@
               VIDEO OUTPUTS
             </h2>
           </div>
-          <p class="font-mono text-sm text-secondaryText max-w-sm font-light leading-relaxed">
-            DaVinci Resolve graded • Cut in Premiere Pro • Powered by YouTube Unlisted 4K streaming.
-          </p>
+          <!-- TYPE HERE: section description (optional) -->
+          <p class="font-mono text-sm text-secondaryText max-w-sm font-light leading-relaxed"></p>
         </div>
 
         <!-- 1 Featured Master Video + 2 Compact Video Cards -->
@@ -318,21 +319,14 @@
           >
             <div class="relative aspect-video bg-card overflow-hidden flex items-center justify-center">
               <img
-                alt="Featured Video Spotlight Thumbnail"
+                alt="Video thumbnail"
                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                 onerror="handleImgError(this)"
                 src="assets/videos/T1.png"
               />
 
-              <!-- Fallback -->
-              <div class="hidden absolute inset-0 flex flex-col justify-between p-8 bg-surface text-center" data-fallback="true">
-                <span class="font-mono text-xs text-accent uppercase tracking-widest">[ SPOTLIGHT REEL ]</span>
-                <div class="my-auto">
-                  <h4 class="font-display text-5xl text-primaryText">The Director's Cut</h4>
-                  <p class="font-mono text-sm text-secondaryText mt-1">Thumbnail: assets/videos/T1.png</p>
-                </div>
-                <span class="font-mono text-xs text-neutral-600">Click to test YouTube Player</span>
-              </div>
+              <!-- Fallback (shows only if the thumbnail file is missing) -->
+              <div class="hidden absolute inset-0 bg-surface" data-fallback="true"></div>
 
               <!-- Play Button Overlay -->
               <div class="absolute inset-0 bg-black/40 flex items-center justify-center group-hover:bg-black/20 transition-all">
@@ -342,12 +336,11 @@
               </div>
             </div>
 
-            <div class="p-6 sm:p-8 flex items-center justify-between border-t border-bordercol bg-surface/50">
-              <div>
-                <span class="font-mono text-xs text-accent uppercase tracking-widest block">FEATURED SHOWCASE</span>
-                <h3 class="font-heading text-2xl sm:text-3xl text-primaryText font-medium">The Visual Storyteller Reel</h3>
-              </div>
-              <span class="font-mono text-sm text-accent">PLAY IN 4K ↗</span>
+            <div class="p-6 sm:p-8 border-t border-bordercol bg-surface/50 min-h-[96px]">
+              <!-- TYPE HERE: small label -->
+              <span class="font-mono text-xs text-accent uppercase tracking-widest block"></span>
+              <!-- TYPE HERE: title -->
+              <h3 class="font-heading text-2xl sm:text-3xl text-primaryText font-medium"></h3>
             </div>
           </div>
 
@@ -362,25 +355,23 @@
             >
               <div class="relative aspect-video bg-card overflow-hidden flex items-center justify-center">
                 <img
-                  alt="Patag Short Film Thumbnail"
+                  alt="Video thumbnail"
                   class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   onerror="handleImgError(this)"
                   src="assets/videos/video-2.jpg"
                 />
-                <div class="hidden absolute inset-0 flex flex-col justify-between p-4 bg-surface text-center" data-fallback="true">
-                  <span class="font-mono text-xs text-accent uppercase">SHORT FILM</span>
-                  <p class="font-heading text-base text-white font-medium my-auto">Patag Narrative</p>
-                  <span class="font-mono text-xs text-neutral-600">assets/videos/video-2.jpg</span>
-                </div>
+                <div class="hidden absolute inset-0 bg-surface" data-fallback="true"></div>
                 <div class="absolute inset-0 bg-black/40 flex items-center justify-center group-hover:bg-black/20 transition-all">
                   <div class="w-12 h-12 rounded-full border border-white/30 bg-black/70 text-white flex items-center justify-center pl-0.5 group-hover:border-accent group-hover:text-accent transition-all">
                     <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg>
                   </div>
                 </div>
               </div>
-              <div class="p-5 border-t border-bordercol bg-surface/50">
-                <h4 class="font-heading text-lg text-primaryText font-medium group-hover:text-accent transition-colors">Patag — Short Film</h4>
-                <p class="font-mono text-xs text-secondaryText mt-1">Atmospheric Landscape &amp; Narrative Grading</p>
+              <div class="p-5 border-t border-bordercol bg-surface/50 min-h-[80px]">
+                <!-- TYPE HERE: title -->
+                <h4 class="font-heading text-lg text-primaryText font-medium group-hover:text-accent transition-colors"></h4>
+                <!-- TYPE HERE: detail -->
+                <p class="font-mono text-xs text-secondaryText mt-1"></p>
               </div>
             </div>
 
@@ -392,25 +383,23 @@
             >
               <div class="relative aspect-video bg-card overflow-hidden flex items-center justify-center">
                 <img
-                  alt="Hanap Musika Recap Thumbnail"
+                  alt="Video thumbnail"
                   class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   onerror="handleImgError(this)"
                   src="assets/videos/video-3.jpg"
                 />
-                <div class="hidden absolute inset-0 flex flex-col justify-between p-4 bg-surface text-center" data-fallback="true">
-                  <span class="font-mono text-xs text-accent uppercase">EVENT RECAP</span>
-                  <p class="font-heading text-base text-white font-medium my-auto">Hanap Musika</p>
-                  <span class="font-mono text-xs text-neutral-600">assets/videos/video-3.jpg</span>
-                </div>
+                <div class="hidden absolute inset-0 bg-surface" data-fallback="true"></div>
                 <div class="absolute inset-0 bg-black/40 flex items-center justify-center group-hover:bg-black/20 transition-all">
                   <div class="w-12 h-12 rounded-full border border-white/30 bg-black/70 text-white flex items-center justify-center pl-0.5 group-hover:border-accent group-hover:text-accent transition-all">
                     <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg>
                   </div>
                 </div>
               </div>
-              <div class="p-5 border-t border-bordercol bg-surface/50">
-                <h4 class="font-heading text-lg text-primaryText font-medium group-hover:text-accent transition-colors">Hanap Musika — Club Event</h4>
-                <p class="font-mono text-xs text-secondaryText mt-1">Rhythmic Multi-Cam Sync &amp; Stage Energy</p>
+              <div class="p-5 border-t border-bordercol bg-surface/50 min-h-[80px]">
+                <!-- TYPE HERE: title -->
+                <h4 class="font-heading text-lg text-primaryText font-medium group-hover:text-accent transition-colors"></h4>
+                <!-- TYPE HERE: detail -->
+                <p class="font-mono text-xs text-secondaryText mt-1"></p>
               </div>
             </div>
 
@@ -490,7 +479,7 @@
           <div class="bento-card p-6 flex flex-col justify-between space-y-4">
             <div>
               <span class="font-mono text-xs text-neutral-500 uppercase tracking-widest block">Email</span>
-              <span class="font-mono text-base text-primaryText truncate block">[your email]</span>
+              <span class="font-mono text-base text-primaryText truncate block">createsniel@gmail.com</span>
             </div>
             <button class="px-4 py-2.5 rounded-full bg-card hover:bg-neutral-800 border border-bordercol text-sm font-mono uppercase tracking-wider text-secondaryText hover:text-white flex items-center justify-between" onclick="copyContact('[your email]', this)">
               <span>Copy</span><span class="text-accent">⎘</span>
@@ -532,12 +521,11 @@
   </footer>
 
   <!-- ============================================================ -->
-  <!-- YOUTUBE VIDEO MODAL PLAYER (Clean, Frameless 4K Streaming)   -->
+  <!-- YOUTUBE VIDEO MODAL PLAYER (no text, just the video)         -->
   <!-- ============================================================ -->
   <div class="fixed inset-0 z-50 modal-overlay hidden flex items-center justify-center p-4 sm:p-8" id="video-modal">
     <div class="relative max-w-4xl w-full bg-surface border border-bordercol rounded-2xl overflow-hidden shadow-2xl flex flex-col">
-      <div class="p-4 flex items-center justify-between border-b border-bordercol bg-card">
-        <span class="font-mono text-sm text-accent uppercase tracking-widest">4K Video Output Player</span>
+      <div class="p-4 flex items-center justify-end border-b border-bordercol bg-card">
         <button aria-label="Close Video" class="text-secondaryText hover:text-white font-mono text-sm uppercase" onclick="closeVideoModal()">
           Close (Esc) ✕
         </button>
@@ -549,22 +537,15 @@
   </div>
 
   <!-- ============================================================ -->
-  <!-- PHOTO EXPANDED LIGHTBOX                                      -->
+  <!-- PHOTO EXPANDED LIGHTBOX (photo only, no details)             -->
   <!-- ============================================================ -->
   <div class="fixed inset-0 z-50 modal-overlay hidden flex items-center justify-center p-4 sm:p-8" id="photo-modal">
     <div class="relative max-w-5xl w-full flex flex-col items-center">
       <button aria-label="Close Lightbox" class="self-end mb-3 text-secondaryText hover:text-white font-mono text-sm uppercase tracking-widest" onclick="closePhotoModal()">
         Close (Esc) ✕
       </button>
-      <div class="relative max-h-[75vh] w-full flex items-center justify-center bg-surface border border-bordercol rounded-2xl p-2 overflow-hidden shadow-2xl">
-        <img alt="Expanded photo" class="max-h-[70vh] w-auto object-contain rounded-xl" id="photo-modal-img" src="" />
-      </div>
-      <div class="w-full mt-3 flex items-center justify-between font-mono text-sm text-secondaryText pt-2">
-        <div>
-          <h4 class="font-heading text-lg text-primaryText font-medium" id="photo-modal-title">Artwork Still</h4>
-          <span class="text-sm text-neutral-500" id="photo-modal-category">Exhibition Exposure</span>
-        </div>
-        <span class="text-accent uppercase text-xs tracking-widest">35MM CELLULOID ARCHIVE</span>
+      <div class="relative max-h-[80vh] w-full flex items-center justify-center bg-surface border border-bordercol rounded-2xl p-2 overflow-hidden shadow-2xl">
+        <img alt="Expanded photo" class="max-h-[75vh] w-auto object-contain rounded-xl" id="photo-modal-img" src="" />
       </div>
     </div>
   </div>
