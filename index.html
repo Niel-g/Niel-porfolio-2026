@@ -373,116 +373,127 @@
     <!-- All text below is empty on purpose. Type your own titles   -->
     <!-- and details where you see "TYPE HERE".                     -->
     <!-- ========================================================== -->
+    <    <!-- ========================================================== -->
+    <!-- PILLAR 03 // VIDEO OUTPUTS (YouTube Unlisted Player)       -->
+    <!-- Replace every "TYPE HERE" with your own text.              -->
+    <!-- ========================================================== -->
     <section class="py-24 sm:py-32 px-6 sm:px-12 border-t border-bordercol" id="video">
       <div class="max-w-[1300px] mx-auto space-y-12">
 
         <!-- Section Header -->
         <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-bordercol pb-6">
           <div>
-            <span class="font-mono text-sm uppercase tracking-[0.22em] text-accent">REELS & FRAGMENTS</span>
+            <span class="font-mono text-sm uppercase tracking-[0.22em] text-accent">REELS &amp; FRAGMENTS</span>
             <h2 class="font-display text-6xl sm:text-7xl lg:text-8xl font-normal tracking-wide text-primaryText uppercase mt-1">
               VIDEO OUTPUTS
             </h2>
           </div>
-          <!-- TYPE HERE: section description (optional) -->
-          <p class="font-mono text-sm text-secondaryText max-w-sm font-light leading-relaxed"></p>
+          <p class="font-mono text-sm text-secondaryText max-w-sm font-light leading-relaxed">TYPE HERE (short intro for this section)</p>
         </div>
 
-        <!-- 1 Featured Master Video + 2 Compact Video Cards -->
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        <!-- One grid: 2 big (half width each) + 4 small (quarter width each) -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 items-start">
 
-          <!-- Featured Spotlight Reel (Spans 8 Columns) -->
-          <div
-            class="lg:col-span-8 bento-card cursor-pointer group"
-            data-video-id="7bNRCMcu1m0"
-            onclick="openVideoModal(this)"
-          >
+          <!-- BIG 1 -->
+          <div class="sm:col-span-2 bento-card cursor-pointer group" data-video-id="7bNRCMcu1m0" onclick="openVideoModal(this)">
             <div class="relative aspect-video bg-card overflow-hidden flex items-center justify-center">
-              <img
-                alt="Video thumbnail"
-                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                onerror="handleImgError(this)"
-                src="assets/videos/T1.png"
-              />
-
-              <!-- Fallback (shows only if the thumbnail file is missing) -->
+              <img alt="TYPE HERE (video 1 title) thumbnail" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" onerror="handleImgError(this)" src="assets/videos/T1.png" />
               <div class="hidden absolute inset-0 bg-surface" data-fallback="true"></div>
-
-              <!-- Play Button Overlay -->
               <div class="absolute inset-0 bg-black/40 flex items-center justify-center group-hover:bg-black/20 transition-all">
                 <div class="w-20 h-20 rounded-full border border-white/40 bg-black/80 text-white flex items-center justify-center pl-1 group-hover:border-accent group-hover:text-accent group-hover:scale-110 transition-all">
                   <svg class="w-8 h-8 fill-current" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg>
                 </div>
               </div>
             </div>
-
             <div class="p-6 sm:p-8 border-t border-bordercol bg-surface/50 min-h-[96px]">
-              <!-- TYPE HERE: small label -->
-              <span class="font-mono text-xs text-accent uppercase tracking-widest block"></span>
-              <!-- TYPE HERE: title -->
-              <h3 class="font-heading text-2xl sm:text-3xl text-primaryText font-medium"></h3>
+              <span class="font-mono text-xs text-accent uppercase tracking-widest block">TYPE HERE (label)</span>
+              <h3 class="font-heading text-2xl sm:text-3xl text-primaryText font-medium">TYPE HERE (title)</h3>
             </div>
           </div>
 
-          <!-- 2 Stacked Supporting Video Cards (Spans 4 Columns) -->
-          <div class="lg:col-span-4 space-y-6">
-
-            <!-- Video 2 -->
-            <div
-              class="bento-card cursor-pointer group"
-              data-video-id="45t0cTQ20W4"
-              onclick="openVideoModal(this)"
-            >
-              <div class="relative aspect-video bg-card overflow-hidden flex items-center justify-center">
-                <img
-                  alt="Video thumbnail"
-                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  onerror="handleImgError(this)"
-                  src="assets/videos/t2.png"
-                />
-                <div class="hidden absolute inset-0 bg-surface" data-fallback="true"></div>
-                <div class="absolute inset-0 bg-black/40 flex items-center justify-center group-hover:bg-black/20 transition-all">
-                  <div class="w-12 h-12 rounded-full border border-white/30 bg-black/70 text-white flex items-center justify-center pl-0.5 group-hover:border-accent group-hover:text-accent transition-all">
-                    <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg>
-                  </div>
+          <!-- BIG 2 -->
+          <div class="sm:col-span-2 bento-card cursor-pointer group" data-video-id="OXSP3YiS0-I" onclick="openVideoModal(this)">
+            <div class="relative aspect-video bg-card overflow-hidden flex items-center justify-center">
+              <img alt="TYPE HERE (video 2 title) thumbnail" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" onerror="handleImgError(this)" src="assets/videos/t2.png" />
+              <div class="hidden absolute inset-0 bg-surface" data-fallback="true"></div>
+              <div class="absolute inset-0 bg-black/40 flex items-center justify-center group-hover:bg-black/20 transition-all">
+                <div class="w-20 h-20 rounded-full border border-white/40 bg-black/80 text-white flex items-center justify-center pl-1 group-hover:border-accent group-hover:text-accent group-hover:scale-110 transition-all">
+                  <svg class="w-8 h-8 fill-current" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg>
                 </div>
               </div>
-              <div class="p-5 border-t border-bordercol bg-surface/50 min-h-[80px]">
-                <!-- TYPE HERE: title -->
-                <h4 class="font-heading text-lg text-primaryText font-medium group-hover:text-accent transition-colors"></h4>
-                <!-- TYPE HERE: detail -->
-                <p class="font-mono text-xs text-secondaryText mt-1"></p>
-              </div>
             </div>
+            <div class="p-6 sm:p-8 border-t border-bordercol bg-surface/50 min-h-[96px]">
+              <span class="font-mono text-xs text-accent uppercase tracking-widest block">TYPE HERE (label)</span>
+              <h3 class="font-heading text-2xl sm:text-3xl text-primaryText font-medium">TYPE HERE (title)</h3>
+            </div>
+          </div>
 
-            <!-- Video 3 -->
-            <div
-              class="bento-card cursor-pointer group"
-              data-video-id="el80wR4Dd6c"
-              onclick="openVideoModal(this)"
-            >
-              <div class="relative aspect-video bg-card overflow-hidden flex items-center justify-center">
-                <img
-                  alt="Video thumbnail"
-                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  onerror="handleImgError(this)"
-                  src="assets/videos/t3.png"
-                />
-                <div class="hidden absolute inset-0 bg-surface" data-fallback="true"></div>
-                <div class="absolute inset-0 bg-black/40 flex items-center justify-center group-hover:bg-black/20 transition-all">
-                  <div class="w-12 h-12 rounded-full border border-white/30 bg-black/70 text-white flex items-center justify-center pl-0.5 group-hover:border-accent group-hover:text-accent transition-all">
-                    <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg>
-                  </div>
+          <!-- SMALL 1 -->
+          <div class="bento-card cursor-pointer group" data-video-id="2pXATpdPe-Q" onclick="openVideoModal(this)">
+            <div class="relative aspect-video bg-card overflow-hidden flex items-center justify-center">
+              <img alt="TYPE HERE (video 3 title) thumbnail" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" onerror="handleImgError(this)" src="assets/videos/bukid.png" />
+              <div class="hidden absolute inset-0 bg-surface" data-fallback="true"></div>
+              <div class="absolute inset-0 bg-black/40 flex items-center justify-center group-hover:bg-black/20 transition-all">
+                <div class="w-12 h-12 rounded-full border border-white/30 bg-black/70 text-white flex items-center justify-center pl-0.5 group-hover:border-accent group-hover:text-accent transition-all">
+                  <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg>
                 </div>
               </div>
-              <div class="p-5 border-t border-bordercol bg-surface/50 min-h-[80px]">
-                <!-- TYPE HERE: title -->
-                <h4 class="font-heading text-lg text-primaryText font-medium group-hover:text-accent transition-colors"></h4>
-                <!-- TYPE HERE: detail -->
-                <p class="font-mono text-xs text-secondaryText mt-1"></p>
+            </div>
+            <div class="p-5 border-t border-bordercol bg-surface/50 min-h-[80px]">
+              <h4 class="font-heading text-lg text-primaryText font-medium group-hover:text-accent transition-colors">TYPE HERE (title)</h4>
+              <p class="font-mono text-xs text-secondaryText mt-1">TYPE HERE (short detail)</p>
+            </div>
+          </div>
+
+          <!-- SMALL 2 -->
+          <div class="bento-card cursor-pointer group" data-video-id="el80wR4Dd6c" onclick="openVideoModal(this)">
+            <div class="relative aspect-video bg-card overflow-hidden flex items-center justify-center">
+              <img alt="TYPE HERE (video 4 title) thumbnail" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" onerror="handleImgError(this)" src="assets/videos/t3.png" />
+              <div class="hidden absolute inset-0 bg-surface" data-fallback="true"></div>
+              <div class="absolute inset-0 bg-black/40 flex items-center justify-center group-hover:bg-black/20 transition-all">
+                <div class="w-12 h-12 rounded-full border border-white/30 bg-black/70 text-white flex items-center justify-center pl-0.5 group-hover:border-accent group-hover:text-accent transition-all">
+                  <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg>
+                </div>
               </div>
             </div>
+            <div class="p-5 border-t border-bordercol bg-surface/50 min-h-[80px]">
+              <h4 class="font-heading text-lg text-primaryText font-medium group-hover:text-accent transition-colors">TYPE HERE (title)</h4>
+              <p class="font-mono text-xs text-secondaryText mt-1">TYPE HERE (short detail)</p>
+            </div>
+          </div>
 
+          <!-- SMALL 3 (opens on YouTube: embedding blocked by copyright claim) -->
+          <div class="bento-card cursor-pointer group" onclick="window.open('https://youtu.be/J3txaxGWAuU', '_blank', 'noopener')">
+            <div class="relative aspect-video bg-card overflow-hidden flex items-center justify-center">
+              <img alt="TYPE HERE (video 5 title) thumbnail" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" onerror="handleImgError(this)" src="assets/videos/pageant.png" />
+              <div class="hidden absolute inset-0 bg-surface" data-fallback="true"></div>
+              <div class="absolute inset-0 bg-black/40 flex items-center justify-center group-hover:bg-black/20 transition-all">
+                <div class="w-12 h-12 rounded-full border border-white/30 bg-black/70 text-white flex items-center justify-center pl-0.5 group-hover:border-accent group-hover:text-accent transition-all">
+                  <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg>
+                </div>
+              </div>
+            </div>
+            <div class="p-5 border-t border-bordercol bg-surface/50 min-h-[80px]">
+              <h4 class="font-heading text-lg text-primaryText font-medium group-hover:text-accent transition-colors">TYPE HERE (title)</h4>
+              <p class="font-mono text-xs text-secondaryText mt-1">Opens on YouTube ↗</p>
+            </div>
+          </div>
+
+          <!-- SMALL 4 -->
+          <div class="bento-card cursor-pointer group" data-video-id="zq7Xho1Rgks" onclick="openVideoModal(this)">
+            <div class="relative aspect-video bg-card overflow-hidden flex items-center justify-center">
+              <img alt="TYPE HERE (video 6 title) thumbnail" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" onerror="handleImgError(this)" src="assets/videos/chair.png" />
+              <div class="hidden absolute inset-0 bg-surface" data-fallback="true"></div>
+              <div class="absolute inset-0 bg-black/40 flex items-center justify-center group-hover:bg-black/20 transition-all">
+                <div class="w-12 h-12 rounded-full border border-white/30 bg-black/70 text-white flex items-center justify-center pl-0.5 group-hover:border-accent group-hover:text-accent transition-all">
+                  <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg>
+                </div>
+              </div>
+            </div>
+            <div class="p-5 border-t border-bordercol bg-surface/50 min-h-[80px]">
+              <h4 class="font-heading text-lg text-primaryText font-medium group-hover:text-accent transition-colors">TYPE HERE (title)</h4>
+              <p class="font-mono text-xs text-secondaryText mt-1">TYPE HERE (short detail)</p>
+            </div>
           </div>
 
         </div>
