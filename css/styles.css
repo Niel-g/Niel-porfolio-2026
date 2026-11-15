@@ -349,18 +349,19 @@ html.intro-pending #intro-loader {
 }
 
 /* ==========================================================================
-   Light Finale (dark until Contact; Contact → footer morph to warm cream)
+   Light Finale (About → Contact → footer morph to warm cream, to the end)
    Theme = .theme-light on <html>, toggled by an IntersectionObserver in
    motion.js. The one-shot .theme-morph class scopes the 0.8s color morph so
    hover transitions everywhere else stay snappy. Variable + utility flips
-   are scoped to #contact / footer, so the dark sections above (About
-   included) keep their colors even while the light theme is active.
+   are scoped to the light sections (#about / #contact / footer), and the
+   body stays obsidian — so the dark sections above keep their colors
+   during and after the flip.
    ========================================================================== */
 
-/* The Contact section carries the liquid curve: a rounded top that rises
-   over the dark About section and settles flat as it scrolls in. It only
-   reads visually when the light theme is active (cream over dark). */
-#contact {
+/* The About section carries the liquid curve: a rounded top that rises over
+   the dark video section and settles flat as it scrolls in. It only reads
+   visually when the light theme is active (cream over dark). */
+#about {
   position: relative;
   z-index: 2;
   margin-top: -28px;
@@ -369,15 +370,19 @@ html.intro-pending #intro-loader {
 
 html.theme-light {
   color-scheme: light;
+  /* html (not body) goes cream: the body stays obsidian so transparent
+     dark sections (video reel) never show cream behind their content */
   background-color: #F4F1EA;
 }
 
-html.theme-light body { background-color: #F4F1EA; }
+/* The light sections paint their own cream, overriding their dark utilities */
+html.theme-light #about,
 html.theme-light #contact,
-html.theme-light footer { background-color: transparent; }
+html.theme-light footer { background-color: #F4F1EA; }
 
-/* Variable flips scoped to the light sections: bento cards, borders and
-   selection inside Contact/Footer follow the cream theme */
+/* Variable flips scoped to the light sections: bento cards, outlines,
+   borders and selection inside them follow the cream theme */
+html.theme-light #about,
 html.theme-light #contact,
 html.theme-light footer {
   --color-surface: #FBFAF7;
@@ -390,16 +395,22 @@ html.theme-light footer {
 
 /* Tailwind utilities carry literal colors, so they need explicit light
    values — scoped to the light sections for the same reason */
+html.theme-light #about .text-primaryText,
 html.theme-light #contact .text-primaryText,
 html.theme-light footer .text-primaryText { color: #17150F; }
+html.theme-light #about .text-secondaryText,
 html.theme-light #contact .text-secondaryText,
 html.theme-light footer .text-secondaryText { color: #5B564D; }
+html.theme-light #about .text-accent,
 html.theme-light #contact .text-accent,
 html.theme-light footer .text-accent { color: #B45309; }
+html.theme-light #about .hover\:text-accent:hover,
 html.theme-light #contact .hover\:text-accent:hover,
 html.theme-light footer .hover\:text-accent:hover { color: #B45309; }
+html.theme-light #about .text-neutral-400,
 html.theme-light footer .text-neutral-400 { color: #6B6459; }
 html.theme-light footer .text-neutral-600 { color: #A8A29E; }
+html.theme-light #about .border-bordercol,
 html.theme-light #contact .border-bordercol,
 html.theme-light footer .border-bordercol { border-color: #E2DCD2; }
 
