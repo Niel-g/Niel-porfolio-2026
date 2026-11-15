@@ -6,8 +6,8 @@
  *   - Lenis momentum smooth scrolling with gliding anchor navigation
  *   - SplitText char reveals on display headlines
  *   - Staggered section choreography via ScrollTrigger ([data-reveal] groups)
- *   - Light "finale": About → Contact morph to warm cream while scrolling,
- *     with a liquid rounded-curve settle on the About section
+ *   - Light "finale": dark until Contact, then Contact → footer morph to
+ *     warm cream, with a liquid rounded-curve settle on Contact
  *
  * Accessibility contract:
  *   - With JS disabled or prefers-reduced-motion, NOTHING is hidden:
@@ -26,8 +26,8 @@
   // Runs for everyone, including reduced-motion users: .theme-light toggles
   // the CSS variables; transition speed is scoped to the one-shot
   // .theme-morph class (0s under prefers-reduced-motion).
-  var aboutEl = document.getElementById('about');
-  if (aboutEl && 'IntersectionObserver' in window) {
+  var contactEl = document.getElementById('contact');
+  if (contactEl && 'IntersectionObserver' in window) {
     var morphTimer = null;
     function setTheme(light) {
       root.classList.add('theme-morph');
@@ -37,14 +37,15 @@
         root.classList.remove('theme-morph');
       }, 950);
     }
-    // Flip as About's top edge rises past ~65% of the viewport; flip back
-    // when it sinks below the same line while scrolling up.
+    // The page stays dark until the very end: flip as Contact's top edge
+    // rises past ~65% of the viewport; flip back when it sinks below the
+    // same line while scrolling up.
     var themeFlip = new IntersectionObserver(function (entries) {
       entries.forEach(function (en) {
         setTheme(en.isIntersecting);
       });
     }, { rootMargin: '0px 0px -35% 0px', threshold: 0 });
-    themeFlip.observe(aboutEl);
+    themeFlip.observe(contactEl);
   }
 
   /* ---------- Intro loader coordination ---------- */
@@ -228,15 +229,18 @@
   }
   whenIntro(beginHero);
 
-  /* ---------- 5. Liquid finale settle — About's rounded top eases flat ---------- */
-  if (aboutEl && window.ScrollTrigger) {
-    gsap.fromTo(aboutEl,
+  /* ---------- 5. Liquid finale settle — Contact's rounded top eases flat ---------- */
+  // Scrub is measured in scroll distance (+=500px) rather than element
+  // position, so the curve always settles fully before the page bottom
+  // on every viewport height (Contact is the last section).
+  if (contactEl && window.ScrollTrigger) {
+    gsap.fromTo(contactEl,
       { borderTopLeftRadius: '120px', borderTopRightRadius: '120px' },
       {
         borderTopLeftRadius: '28px',
         borderTopRightRadius: '28px',
         ease: 'none',
-        scrollTrigger: { trigger: aboutEl, start: 'top 90%', end: 'top 30%', scrub: true }
+        scrollTrigger: { trigger: contactEl, start: 'top 95%', end: '+=500', scrub: true }
       });
   }
 

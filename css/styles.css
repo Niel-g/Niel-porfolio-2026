@@ -349,16 +349,18 @@ html.intro-pending #intro-loader {
 }
 
 /* ==========================================================================
-   Light Finale (About → Contact → footer morph to warm cream while scrolling)
+   Light Finale (dark until Contact; Contact → footer morph to warm cream)
    Theme = .theme-light on <html>, toggled by an IntersectionObserver in
    motion.js. The one-shot .theme-morph class scopes the 0.8s color morph so
-   hover transitions everywhere else stay snappy.
+   hover transitions everywhere else stay snappy. Variable + utility flips
+   are scoped to #contact / footer, so the dark sections above (About
+   included) keep their colors even while the light theme is active.
    ========================================================================== */
 
-/* The About section carries the liquid curve: a rounded top that rises over
-   the dark video section and settles flat as it scrolls in. It only reads
-   visually when the light theme is active (cream over dark). */
-#about {
+/* The Contact section carries the liquid curve: a rounded top that rises
+   over the dark About section and settles flat as it scrolls in. It only
+   reads visually when the light theme is active (cream over dark). */
+#contact {
   position: relative;
   z-index: 2;
   margin-top: -28px;
@@ -368,7 +370,16 @@ html.intro-pending #intro-loader {
 html.theme-light {
   color-scheme: light;
   background-color: #F4F1EA;
-  /* Variable flips — bento cards, outlines, selection, header border follow */
+}
+
+html.theme-light body { background-color: #F4F1EA; }
+html.theme-light #contact,
+html.theme-light footer { background-color: transparent; }
+
+/* Variable flips scoped to the light sections: bento cards, borders and
+   selection inside Contact/Footer follow the cream theme */
+html.theme-light #contact,
+html.theme-light footer {
   --color-surface: #FBFAF7;
   --color-card: #FFFFFF;
   --color-border: #E2DCD2;
@@ -377,19 +388,20 @@ html.theme-light {
   --color-accent: #B45309;
 }
 
-html.theme-light body { background-color: #F4F1EA; }
-html.theme-light #about,
-html.theme-light #contact,
-html.theme-light footer { background-color: transparent; }
-
-/* Tailwind utilities carry literal colors, so they need explicit light values */
-html.theme-light .text-primaryText { color: #17150F; }
-html.theme-light .text-secondaryText { color: #5B564D; }
-html.theme-light .text-accent { color: #B45309; }
-html.theme-light .hover\:text-accent:hover { color: #B45309; }
-html.theme-light .text-neutral-400 { color: #6B6459; }
-html.theme-light .text-neutral-600 { color: #A8A29E; }
-html.theme-light .border-bordercol { border-color: #E2DCD2; }
+/* Tailwind utilities carry literal colors, so they need explicit light
+   values — scoped to the light sections for the same reason */
+html.theme-light #contact .text-primaryText,
+html.theme-light footer .text-primaryText { color: #17150F; }
+html.theme-light #contact .text-secondaryText,
+html.theme-light footer .text-secondaryText { color: #5B564D; }
+html.theme-light #contact .text-accent,
+html.theme-light footer .text-accent { color: #B45309; }
+html.theme-light #contact .hover\:text-accent:hover,
+html.theme-light footer .hover\:text-accent:hover { color: #B45309; }
+html.theme-light footer .text-neutral-400 { color: #6B6459; }
+html.theme-light footer .text-neutral-600 { color: #A8A29E; }
+html.theme-light #contact .border-bordercol,
+html.theme-light footer .border-bordercol { border-color: #E2DCD2; }
 
 /* Header + mobile nav stay readable over cream */
 html.theme-light .header-glass {
