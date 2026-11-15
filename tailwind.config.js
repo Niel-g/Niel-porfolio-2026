@@ -14,7 +14,7 @@ module.exports = {
         accent: '#D97706'
       },
       fontFamily: {
-        display: ['"Bebas Neue"', 'sans-serif'],
+        display: ['Archivo', 'sans-serif'],
         heading: ['"Space Grotesk"', 'sans-serif'],
         sans: ['Inter', 'sans-serif'],
         mono: ['"IBM Plex Mono"', 'monospace']

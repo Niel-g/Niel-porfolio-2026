@@ -12,10 +12,17 @@
   --color-accent: #D97706;
 
   /* Fonts */
-  --font-display: 'Bebas Neue', sans-serif;
+  --font-display: 'Archivo', sans-serif;
   --font-heading: 'Space Grotesk', sans-serif;
   --font-sans: 'Inter', sans-serif;
   --font-mono: 'IBM Plex Mono', monospace;
+
+  /* Motion tokens (unified easing — Lando-style consistency) */
+  --ease-expo: cubic-bezier(0.65, 0.05, 0, 1);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-fast: 0.3s;
+  --dur-base: 0.5s;
+  --dur-slow: 0.75s;
 }
 
 /* ==========================================================================
@@ -31,7 +38,27 @@
 }
 
 html {
-  scroll-behavior: smooth;
+  /* Lenis owns scroll behavior; native smooth-scroll would fight it */
+}
+
+/* Lenis base styles */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: clip;
+}
+
+/* Display type: Archivo variable — condensed, heavy (replaces Bebas Neue) */
+.font-display,
+.hero-bg-text {
+  font-weight: 700;
+  font-variation-settings: "wdth" 78;
+  letter-spacing: 0.01em;
 }
 
 body {
@@ -78,8 +105,7 @@ body {
 .hero-bg-text {
   font-family: var(--font-display);
   font-size: clamp(4.5rem, 15vw, 15rem);
-  line-height: 0.85;
-  color: #1a1a1a;
+  line-height: 0.85;  color: #1a1a1a;
   text-align: center;
   text-transform: uppercase;
   user-select: none;
@@ -107,7 +133,7 @@ body {
   max-width: 440px;
   width: 90%;
   margin: 0 auto;
-  transition: transform 0.3s ease-out;
+  transition: transform var(--dur-fast) var(--ease-out);
 }
 
 .hero-cutout-img {
@@ -141,7 +167,7 @@ body {
   border: 1px solid var(--color-border);
   border-radius: 1.5rem;
   overflow: hidden;
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all var(--dur-base) var(--ease-expo);
   position: relative;
 }
 
