@@ -228,3 +228,215 @@ body {
   background-color: rgba(5, 5, 5, 0.95);
   backdrop-filter: blur(16px);
 }
+
+/* ==========================================================================
+   Intro Loader (once per session — skipped for reduced motion & repeat visits)
+   ========================================================================== */
+#intro-loader {
+  display: none;
+  position: fixed;
+  inset: 0;
+  /* Above the header (40), below the film grain (99) and cursor (100):
+     the grain renders over the loader, giving it the same celluloid texture */
+  z-index: 90;
+  background-color: #050505;
+  background-image: radial-gradient(ellipse at 50% 38%, rgba(217, 119, 6, 0.07), transparent 62%);
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+html.intro-pending #intro-loader {
+  display: flex;
+}
+
+.intro-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: intro-in 0.9s var(--ease-out) both;
+}
+
+.intro-word {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-variation-settings: "wdth" 78;
+  font-size: clamp(2.75rem, 8vw, 5.5rem);
+  letter-spacing: 0.02em;
+  line-height: 1;
+  color: #F5F5F5;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.intro-word .intro-dot {
+  color: var(--color-accent);
+}
+
+.intro-tag {
+  margin-top: 14px;
+  padding-left: 0.4em; /* optically balances the wide tracking */
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: #737373;
+}
+
+.intro-count {
+  position: fixed;
+  right: 1.5rem;
+  bottom: calc(1.25rem + env(safe-area-inset-bottom, 0px));
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  letter-spacing: 0.2em;
+  color: var(--color-accent);
+}
+
+.intro-bar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  background: rgba(217, 119, 6, 0.15);
+}
+
+.intro-bar span {
+  display: block;
+  height: 100%;
+  width: 100%;
+  background: var(--color-accent);
+  transform: scaleX(0);
+  transform-origin: left;
+}
+
+@keyframes intro-in {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Liquid exit: the panel lifts with a curved trailing edge (goo wipe) */
+#intro-loader.intro-exit {
+  animation: intro-lift 0.9s cubic-bezier(0.76, 0, 0.24, 1) forwards;
+}
+
+#intro-loader.intro-exit .intro-inner,
+#intro-loader.intro-exit .intro-count,
+#intro-loader.intro-exit .intro-bar {
+  animation: intro-fade 0.35s ease forwards;
+}
+
+@keyframes intro-lift {
+  from {
+    transform: translateY(0);
+    border-bottom-left-radius: 0 0;
+    border-bottom-right-radius: 0 0;
+  }
+  to {
+    transform: translateY(-101%);
+    border-bottom-left-radius: 50% 22vh;
+    border-bottom-right-radius: 50% 22vh;
+  }
+}
+
+@keyframes intro-fade {
+  to { opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #intro-loader { display: none !important; }
+}
+
+/* ==========================================================================
+   Light Finale (About → Contact → footer morph to warm cream while scrolling)
+   Theme = .theme-light on <html>, toggled by an IntersectionObserver in
+   motion.js. The one-shot .theme-morph class scopes the 0.8s color morph so
+   hover transitions everywhere else stay snappy.
+   ========================================================================== */
+
+/* The About section carries the liquid curve: a rounded top that rises over
+   the dark video section and settles flat as it scrolls in. It only reads
+   visually when the light theme is active (cream over dark). */
+#about {
+  position: relative;
+  z-index: 2;
+  margin-top: -28px;
+  border-radius: 28px 28px 0 0;
+}
+
+html.theme-light {
+  color-scheme: light;
+  background-color: #F4F1EA;
+  /* Variable flips — bento cards, outlines, selection, header border follow */
+  --color-surface: #FBFAF7;
+  --color-card: #FFFFFF;
+  --color-border: #E2DCD2;
+  --color-text-primary: #17150F;
+  --color-text-muted: #5B564D;
+  --color-accent: #B45309;
+}
+
+html.theme-light body { background-color: #F4F1EA; }
+html.theme-light #about,
+html.theme-light #contact,
+html.theme-light footer { background-color: transparent; }
+
+/* Tailwind utilities carry literal colors, so they need explicit light values */
+html.theme-light .text-primaryText { color: #17150F; }
+html.theme-light .text-secondaryText { color: #5B564D; }
+html.theme-light .text-accent { color: #B45309; }
+html.theme-light .hover\:text-accent:hover { color: #B45309; }
+html.theme-light .text-neutral-400 { color: #6B6459; }
+html.theme-light .text-neutral-600 { color: #A8A29E; }
+html.theme-light .border-bordercol { border-color: #E2DCD2; }
+
+/* Header + mobile nav stay readable over cream */
+html.theme-light .header-glass {
+  background-color: rgba(244, 241, 234, 0.85);
+  border-bottom-color: #E2DCD2;
+}
+html.theme-light #mobile-nav {
+  background-color: #FFFFFF;
+  border-color: #E2DCD2;
+}
+
+/* Film grain reads as paper tooth on cream */
+html.theme-light .film-grain::after { opacity: 0.05; }
+
+/* Custom cursor over cream: ring goes dark, the amber dot stays */
+html.theme-light .cursor-ring { border-color: rgba(23, 21, 15, 0.45); }
+
+/* One-shot morph: everything the theme flip touches eases together.
+   !important wins over the inline contact-card/cursor transitions for
+   the duration of the morph window only. */
+html.theme-morph body,
+html.theme-morph #about,
+html.theme-morph #contact,
+html.theme-morph footer,
+html.theme-morph .text-primaryText,
+html.theme-morph .text-secondaryText,
+html.theme-morph .text-accent,
+html.theme-morph .text-neutral-400,
+html.theme-morph .text-neutral-600,
+html.theme-morph .border-bordercol,
+html.theme-morph .header-glass,
+html.theme-morph .bento-card,
+html.theme-morph #mobile-nav,
+html.theme-morph .contact-card,
+html.theme-morph .contact-btn,
+html.theme-morph .film-grain::after,
+html.theme-morph .cursor-ring {
+  transition:
+    background-color 0.8s cubic-bezier(0.65, 0, 0.35, 1),
+    color 0.8s cubic-bezier(0.65, 0, 0.35, 1),
+    border-color 0.8s cubic-bezier(0.65, 0, 0.35, 1),
+    opacity 0.8s cubic-bezier(0.65, 0, 0.35, 1) !important;
+}
+
+/* Reduced motion: the theme flip is instant */
+@media (prefers-reduced-motion: reduce) {
+  html.theme-morph * {
+    transition-duration: 0s !important;
+  }
+}

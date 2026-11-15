@@ -2,18 +2,63 @@
  * motion.js — Design upgrade: Lenis smooth scroll + GSAP choreography
  *
  * Behavior system (Lando-style):
+ *   - Intro loader coordination (hero choreography waits for 'intro:done')
  *   - Lenis momentum smooth scrolling with gliding anchor navigation
  *   - SplitText char reveals on display headlines
  *   - Staggered section choreography via ScrollTrigger ([data-reveal] groups)
+ *   - Light "finale": About → Contact morph to warm cream while scrolling,
+ *     with a liquid rounded-curve settle on the About section
  *
  * Accessibility contract:
  *   - With JS disabled or prefers-reduced-motion, NOTHING is hidden:
  *     every animation is a gsap.from(), so the final readable state is the default.
- *   - reduced-motion exits before any animation is created.
+ *   - reduced-motion exits before any animation is created; the loader is
+ *     skipped entirely (head gate + CSS) and the theme flip still works
+ *     (instant, no transition under the reduced-motion media query).
  *   - split.revert() restores original text nodes for assistive tech.
  */
 (function () {
   'use strict';
+
+  var root = document.documentElement;
+
+  /* ---------- 0. Light finale theme flip (independent of GSAP) ---------- */
+  // Runs for everyone, including reduced-motion users: .theme-light toggles
+  // the CSS variables; transition speed is scoped to the one-shot
+  // .theme-morph class (0s under prefers-reduced-motion).
+  var aboutEl = document.getElementById('about');
+  if (aboutEl && 'IntersectionObserver' in window) {
+    var morphTimer = null;
+    function setTheme(light) {
+      root.classList.add('theme-morph');
+      root.classList.toggle('theme-light', light);
+      if (morphTimer) clearTimeout(morphTimer);
+      morphTimer = setTimeout(function () {
+        root.classList.remove('theme-morph');
+      }, 950);
+    }
+    // Flip as About's top edge rises past ~65% of the viewport; flip back
+    // when it sinks below the same line while scrolling up.
+    var themeFlip = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        setTheme(en.isIntersecting);
+      });
+    }, { rootMargin: '0px 0px -35% 0px', threshold: 0 });
+    themeFlip.observe(aboutEl);
+  }
+
+  /* ---------- Intro loader coordination ---------- */
+  // The inline controller (index.html) owns the loader: it skips for
+  // reduced-motion / repeat visits, then sets window.__introDone and
+  // dispatches 'intro:done' as the curtain starts lifting.
+  var introDone = window.__introDone === true;
+  function whenIntro(fn) {
+    if (introDone) { fn(); return; }
+    document.addEventListener('intro:done', function () {
+      introDone = true;
+      fn();
+    }, { once: true });
+  }
 
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (reduceMotion || typeof window.gsap === 'undefined') return;
@@ -39,6 +84,13 @@
       lerp: 0.1,
       wheelMultiplier: 1
     });
+
+    // Hold scroll while the intro curtain is up (the controller blocks
+    // keyboard/native gestures; this covers Lenis' hijacked wheel events)
+    if (!introDone) {
+      lenis.stop();
+      document.addEventListener('intro:done', function () { lenis.start(); }, { once: true });
+    }
 
     // Anchor links glide to their target instead of jumping
     document.querySelectorAll('a[href^="#"]').forEach(function (a) {
@@ -69,10 +121,10 @@
     }
   }
 
-  /* ---------- 2. Split-text headline reveals ---------- */
+  /* ---------- 2. Split-text headline reveals (scroll-triggered sections) ---------- */
   // Headline-length copy only (< 8 words), per ui-ux-pro-max guidance.
+  // The hero headline is handled in beginHero() so it waits for the loader.
   var splitTargets = [
-    '.hero-stroke-text',
     '#manipulation h2',
     '#photography h2',
     '#video h2'
@@ -95,24 +147,64 @@
   });
 
   /* ---------- 3. Section choreography ---------- */
-  // Each [data-reveal] container staggers its direct children on viewport enter.
+  // Each [data-reveal] container staggers its direct children on viewport
+  // enter. Hero groups are collected and played in beginHero() instead.
+  var heroGroups = [];
   document.querySelectorAll('[data-reveal]').forEach(function (group) {
     if (!group.children.length) return;
-    var isHero = group.closest('#hero');
-    var config = {
+    if (group.closest('#hero')) { heroGroups.push(group); return; }
+    gsap.from(group.children, {
       opacity: 0,
       y: 24,
       duration: 0.5,
       stagger: 0.08,
-      ease: 'power2.out'
-    };
-    if (!isHero) {
-      config.scrollTrigger = { trigger: group, start: 'top 85%' };
-    }
-    gsap.from(group.children, config);
+      ease: 'power2.out',
+      scrollTrigger: { trigger: group, start: 'top 85%' }
+    });
   });
 
-  /* ---------- 4. Scroll-linked hero depth (scroll scrub, desktop only) ---------- */
+  /* ---------- 4. Hero choreography — starts as the curtain lifts ---------- */
+  function beginHero() {
+    heroGroups.forEach(function (group) {
+      gsap.from(group.children, {
+        opacity: 0,
+        y: 24,
+        duration: 0.5,
+        stagger: 0.08,
+        ease: 'power2.out'
+      });
+    });
+
+    var heroHeadline = document.querySelector('.hero-stroke-text');
+    if (heroHeadline && hasSplit) {
+      var split = new SplitText(heroHeadline, { type: 'chars' });
+      gsap.from(split.chars, {
+        opacity: 0,
+        y: SPLIT.y,
+        rotateX: SPLIT.rotateX,
+        duration: SPLIT.duration,
+        stagger: 0.015,
+        ease: EASE,
+        scrollTrigger: { trigger: heroHeadline, start: 'top 92%' },
+        onComplete: function () { split.revert(); }
+      });
+    }
+  }
+  whenIntro(beginHero);
+
+  /* ---------- 5. Liquid finale settle — About's rounded top eases flat ---------- */
+  if (aboutEl && window.ScrollTrigger) {
+    gsap.fromTo(aboutEl,
+      { borderTopLeftRadius: '120px', borderTopRightRadius: '120px' },
+      {
+        borderTopLeftRadius: '28px',
+        borderTopRightRadius: '28px',
+        ease: 'none',
+        scrollTrigger: { trigger: aboutEl, start: 'top 90%', end: 'top 30%', scrub: true }
+      });
+  }
+
+  /* ---------- 6. Scroll-linked hero depth (scroll scrub, desktop only) ---------- */
   // Deepens the existing 3D hero: background type drifts slower than content.
   var heroBg = document.querySelector('.hero-bg-text');
   if (heroBg && window.ScrollTrigger && window.matchMedia('(pointer: fine)').matches) {
