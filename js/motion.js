@@ -141,25 +141,61 @@
       duration: SPLIT.duration,
       stagger: 0.015,
       ease: EASE,
-      scrollTrigger: { trigger: el, start: 'top 92%' },
+      scrollTrigger: { trigger: el, start: 'top 92%', once: true },
       onComplete: function () { split.revert(); }
     });
   });
 
   /* ---------- 3. Section choreography ---------- */
-  // Each [data-reveal] container staggers its direct children on viewport
-  // enter. Hero groups are collected and played in beginHero() instead.
+  // [data-reveal] groups stagger their children on viewport enter.
+  // Small groups (section headers, 2-col layouts) animate as one unit;
+  // large card grids reveal per-card via ScrollTrigger.batch so each card
+  // animates exactly as IT enters the viewport — no "arrive mid-fade" on
+  // the lower rows when scrolling fast. Reveals play once (no replay
+  // flicker when scrolling back up).
   var heroGroups = [];
   document.querySelectorAll('[data-reveal]').forEach(function (group) {
     if (!group.children.length) return;
     if (group.closest('#hero')) { heroGroups.push(group); return; }
+
+    if (group.children.length > 2) {
+      var cards = Array.prototype.slice.call(group.children);
+      // Cards already scrolled past (above the viewport) never "enter",
+      // so settle them instantly — they can't be left invisible after a
+      // mid-page reload or an anchor jump.
+      var animatable = cards.filter(function (card) {
+        if (card.getBoundingClientRect().top < 0) {
+          gsap.set(card, { opacity: 1, y: 0 });
+          return false;
+        }
+        return true;
+      });
+      if (!animatable.length) return;
+      gsap.set(animatable, { opacity: 0, y: 24 });
+      ScrollTrigger.batch(animatable, {
+        start: 'top 88%',
+        once: true,
+        onEnter: function (batch) {
+          gsap.to(batch, {
+            opacity: 1,
+            y: 0,
+            duration: 0.5,
+            stagger: 0.08,
+            ease: 'power2.out',
+            overwrite: true
+          });
+        }
+      });
+      return;
+    }
+
     gsap.from(group.children, {
       opacity: 0,
       y: 24,
       duration: 0.5,
       stagger: 0.08,
       ease: 'power2.out',
-      scrollTrigger: { trigger: group, start: 'top 85%' }
+      scrollTrigger: { trigger: group, start: 'top 85%', once: true }
     });
   });
 
@@ -185,7 +221,7 @@
         duration: SPLIT.duration,
         stagger: 0.015,
         ease: EASE,
-        scrollTrigger: { trigger: heroHeadline, start: 'top 92%' },
+        scrollTrigger: { trigger: heroHeadline, start: 'top 92%', once: true },
         onComplete: function () { split.revert(); }
       });
     }

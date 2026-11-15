@@ -430,8 +430,13 @@ html.theme-morph .cursor-ring {
   transition:
     background-color 0.8s cubic-bezier(0.65, 0, 0.35, 1),
     color 0.8s cubic-bezier(0.65, 0, 0.35, 1),
-    border-color 0.8s cubic-bezier(0.65, 0, 0.35, 1),
-    opacity 0.8s cubic-bezier(0.65, 0, 0.35, 1) !important;
+    border-color 0.8s cubic-bezier(0.65, 0, 0.35, 1) !important;
+}
+
+/* The grain's opacity shift is the only non-color property that morphs —
+   scoped here so the flip can never slow down GSAP opacity reveals */
+html.theme-morph .film-grain::after {
+  transition: opacity 0.8s cubic-bezier(0.65, 0, 0.35, 1) !important;
 }
 
 /* Reduced motion: the theme flip is instant */
