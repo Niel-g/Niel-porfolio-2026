@@ -25,6 +25,13 @@
 
   var EASE = 'expo.out';
 
+  /* Mobile simplification (Scroll-Triggered Storytelling guidance):
+     touch devices get shorter travel, no 3D char rotation, quicker reveals */
+  var coarse = window.matchMedia('(hover: none), (pointer: coarse)').matches;
+  var SPLIT = coarse
+    ? { y: 14, rotateX: 0, duration: 0.45 }
+    : { y: 20, rotateX: -40, duration: 0.6 };
+
   /* ---------- 1. Lenis smooth scroll ---------- */
   if (typeof window.Lenis === 'function') {
     var lenis = new window.Lenis({
@@ -77,9 +84,9 @@
     var split = new SplitText(el, { type: 'chars' });
     gsap.from(split.chars, {
       opacity: 0,
-      y: 20,
-      rotateX: -40,
-      duration: 0.6,
+      y: SPLIT.y,
+      rotateX: SPLIT.rotateX,
+      duration: SPLIT.duration,
       stagger: 0.015,
       ease: EASE,
       scrollTrigger: { trigger: el, start: 'top 92%' },

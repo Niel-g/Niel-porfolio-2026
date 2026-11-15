@@ -68,6 +68,10 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
+  /* Touch polish: no gray flash on tap, no auto text inflation */
+  -webkit-tap-highlight-color: transparent;
+  text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
 }
 
 /* ==========================================================================
@@ -99,6 +103,8 @@ body {
   justify-content: center;
   overflow: hidden;
   min-height: calc(100vh - 80px);
+  /* Mobile browsers (iOS URL bar) — small viewport height avoids layout jumps */
+  min-height: calc(100svh - 80px);
 }
 
 /* Layer 1: Huge background typography */
@@ -126,6 +132,13 @@ body {
   color: transparent;
 }
 
+/* Mobile: keep the giant headline inside the viewport (nowrap, centered) */
+@media (max-width: 640px) {
+  .hero-bg-text {
+    font-size: clamp(2.75rem, 13.5vw, 4.5rem);
+  }
+}
+
 /* Layer 3: Pop-out Cutout Portrait (Centered overlapping the text) */
 .hero-cutout-wrapper {
   position: relative;
@@ -140,6 +153,7 @@ body {
   width: 100%;
   height: auto;
   max-height: 65vh;
+  max-height: 65svh;
   object-fit: contain;
   display: block;
   margin: 0 auto;

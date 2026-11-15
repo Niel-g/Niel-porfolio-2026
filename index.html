@@ -113,6 +113,13 @@
       filter: none;
     }
 
+    /* Touch devices have no hover — always show photography in full color */
+    @media (hover: none) {
+      .scroll-tile-bw img {
+        filter: none;
+      }
+    }
+
     .scroll-gallery-empty {
       border: 1px dashed #1F1F1F;
       border-radius: 1rem;
@@ -1028,7 +1035,22 @@
       window.addEventListener('scroll', onScroll, { passive: true });
 
       var targets = document.querySelectorAll('.scroll-gallery[data-gallery]');
-      for (var t = 0; t < targets.length; t++) buildWall(targets[t]);
+      /* Lazy build: each wall loads its images only as it approaches the
+         viewport (400px margin), so mobile visitors don't download the
+         entire gallery on page load. */
+      if ('IntersectionObserver' in window) {
+        var wallObserver = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              wallObserver.unobserve(entry.target);
+              buildWall(entry.target);
+            }
+          });
+        }, { rootMargin: '400px 0px' });
+        for (var t = 0; t < targets.length; t++) wallObserver.observe(targets[t]);
+      } else {
+        for (var t2 = 0; t2 < targets.length; t2++) buildWall(targets[t2]);
+      }
     })();
   </script>
 
