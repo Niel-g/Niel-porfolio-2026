@@ -11,46 +11,43 @@
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Niel Ayes — Visual Storyteller &amp; Film Editor" />
   <meta property="og:description" content="Photo manipulation, photography and cinematic video edits by Joebeniel 'Niel' Ayes." />
+  <meta property="og:url" content="https://niel-portfolio-2026.vercel.app" />
+  <meta property="og:image" content="https://niel-portfolio-2026.vercel.app/assets/images/og-cover.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
   <meta name="twitter:card" content="summary_large_image" />
-  <!-- AFTER DEPLOY, add a share image with your full live URL, e.g.:
-  <meta property="og:image" content="https://YOUR-DOMAIN/assets/images/og-cover.jpg" />
-  -->
+  <meta name="twitter:title" content="Niel Ayes — Visual Storyteller &amp; Film Editor" />
+  <meta name="twitter:description" content="Photo manipulation, photography and cinematic video edits by Joebeniel 'Niel' Ayes." />
+  <meta name="twitter:image" content="https://niel-portfolio-2026.vercel.app/assets/images/og-cover.jpg" />
+  <link rel="canonical" href="https://niel-portfolio-2026.vercel.app" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Joebeniel 'Niel' Ayes",
+    "jobTitle": "Visual Storyteller & Film Editor",
+    "url": "https://niel-portfolio-2026.vercel.app",
+    "image": "https://niel-portfolio-2026.vercel.app/assets/images/og-cover.jpg",
+    "email": "mailto:createsniel@gmail.com",
+    "telephone": "+63-993-907-3410",
+    "address": { "@type": "PostalAddress", "addressCountry": "PH" },
+    "knowsAbout": ["Photo Manipulation", "Photography", "Video Editing", "DaVinci Resolve", "Adobe Premiere Pro", "Adobe Photoshop"]
+  }
+  </script>
 
   <title>Niel Ayes — Visual Storyteller &amp; Film Editor</title>
-  <link rel="icon" type="image/png" href="assets/images/1 Transparent.png" />
-  <link rel="apple-touch-icon" href="assets/images/1 Transparent.png" />
+  <link rel="icon" type="image/png" href="assets/images/favicon-48.png" />
+  <link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png" />
 
   <!-- ==================== FONTS ==================== -->
   <link href="https://fonts.googleapis.com" rel="preconnect" />
   <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=IBM+Plex+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
 
-  <!-- ==================== TAILWIND CSS (CDN) ==================== -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      darkMode: "class",
-      theme: {
-        extend: {
-          colors: {
-            obsidian: '#050505',
-            surface: '#0B0B0B',
-            card: '#111111',
-            bordercol: '#1F1F1F',
-            primaryText: '#F5F5F5',
-            secondaryText: '#A1A1AA',
-            accent: '#D97706'
-          },
-          fontFamily: {
-            display: ['"Bebas Neue"', 'sans-serif'],
-            heading: ['"Space Grotesk"', 'sans-serif'],
-            sans: ['Inter', 'sans-serif'],
-            mono: ['"IBM Plex Mono"', 'monospace']
-          }
-        }
-      }
-    }
-  </script>
+  <!-- ==================== TAILWIND CSS (precompiled) ==================== -->
+  <!-- Rebuilt with: npx tailwindcss@3 -c tailwind.config.js -i css/tailwind-input.css -o css/tailwind.css --minify
+       (the old runtime CDN script was ~300 KB of JS and logged a production warning) -->
+  <link rel="stylesheet" href="css/tailwind.css" />
 
   <!-- Custom Stylesheet -->
   <link rel="stylesheet" href="css/styles.css" />
@@ -351,13 +348,13 @@
 
         <!-- Cutout Image Element (With Drop Shadow & Graceful Fallback) -->
         <div class="hero-cutout-wrapper my-4">
-          <!-- User Image Location: assets/images/1 Transparent.png -->
+          <!-- Hero cutout: optimized WebP version of the original portrait -->
           <img
             alt="Portrait cutout of Joebeniel Niel Ayes"
             class="hero-cutout-img grayscale contrast-110 hover:grayscale-0 transition-all duration-700"
             fetchpriority="high"
             onerror="handleImgError(this)"
-            src="assets/images/1 Transparent.png"
+            src="assets/images/portrait.webp"
           />
 
           <!-- Fallback Archival Plate if local cutout image is not placed yet -->
@@ -367,7 +364,7 @@
               NA
             </div>
             <h2 class="font-heading text-2xl text-primaryText font-medium">Joebeniel Ayes</h2>
-            <p class="font-mono text-sm text-secondaryText">Drop your PNG cutout here:<br><span class="text-accent">assets/images/1 Transparent.png</span></p>
+            <p class="font-mono text-sm text-secondaryText">Drop your cutout here:<br><span class="text-accent">assets/images/portrait.webp</span></p>
           </div>
         </div>
 
@@ -479,7 +476,7 @@
           <!-- BIG 1 — GOZAR -->
           <div class="sm:col-span-2 bento-card cursor-pointer group focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent" data-video-id="7bNRCMcu1m0" role="button" tabindex="0" onclick="openVideoModal(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}">
             <div class="relative aspect-video bg-card overflow-hidden flex items-center justify-center">
-              <img alt="GOZAR — Enjoy the Process thumbnail" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy" decoding="async" onerror="handleImgError(this)" src="assets/videos/T1.png" />
+              <img alt="GOZAR — Enjoy the Process thumbnail" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy" decoding="async" onerror="handleImgError(this)" src="assets/videos/T1.webp" />
               <div class="hidden absolute inset-0 bg-surface" data-fallback="true"></div>
               <div class="absolute inset-0 bg-black/40 flex items-center justify-center group-hover:bg-black/20 transition-all">
                 <div class="w-20 h-20 rounded-full border border-white/40 bg-black/80 text-white flex items-center justify-center pl-1 group-hover:border-accent group-hover:text-accent group-hover:scale-110 transition-all">
@@ -497,7 +494,7 @@
           <!-- BIG 2 — ADRENALINE -->
           <div class="sm:col-span-2 bento-card cursor-pointer group focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent" data-video-id="OXSP3YiS0-I" role="button" tabindex="0" onclick="openVideoModal(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}">
             <div class="relative aspect-video bg-card overflow-hidden flex items-center justify-center">
-              <img alt="ADRENALINE — Unleashed thumbnail" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy" decoding="async" onerror="handleImgError(this)" src="assets/videos/t2.png" />
+              <img alt="ADRENALINE — Unleashed thumbnail" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy" decoding="async" onerror="handleImgError(this)" src="assets/videos/t2.webp" />
               <div class="hidden absolute inset-0 bg-surface" data-fallback="true"></div>
               <div class="absolute inset-0 bg-black/40 flex items-center justify-center group-hover:bg-black/20 transition-all">
                 <div class="w-20 h-20 rounded-full border border-white/40 bg-black/80 text-white flex items-center justify-center pl-1 group-hover:border-accent group-hover:text-accent group-hover:scale-110 transition-all">
@@ -515,7 +512,7 @@
           <!-- SMALL 1 — BUKID MOMENTS -->
           <div class="bento-card cursor-pointer group focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent" data-video-id="2pXATpdPe-Q" role="button" tabindex="0" onclick="openVideoModal(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}">
             <div class="relative aspect-video bg-card overflow-hidden flex items-center justify-center">
-              <img alt="BUKID MOMENTS thumbnail" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" decoding="async" onerror="handleImgError(this)" src="assets/videos/bukid.png" />
+              <img alt="BUKID MOMENTS thumbnail" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" decoding="async" onerror="handleImgError(this)" src="assets/videos/bukid.webp" />
               <div class="hidden absolute inset-0 bg-surface" data-fallback="true"></div>
               <div class="absolute inset-0 bg-black/40 flex items-center justify-center group-hover:bg-black/20 transition-all">
                 <div class="w-12 h-12 rounded-full border border-white/30 bg-black/70 text-white flex items-center justify-center pl-0.5 group-hover:border-accent group-hover:text-accent transition-all">
@@ -533,7 +530,7 @@
           <!-- SMALL 2 — HANAP MUSIKA -->
           <div class="bento-card cursor-pointer group focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent" data-video-id="el80wR4Dd6c" role="button" tabindex="0" onclick="openVideoModal(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}">
             <div class="relative aspect-video bg-card overflow-hidden flex items-center justify-center">
-              <img alt="HANAP MUSIKA — Live Stage thumbnail" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" decoding="async" onerror="handleImgError(this)" src="assets/videos/t3.png" />
+              <img alt="HANAP MUSIKA — Live Stage thumbnail" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" decoding="async" onerror="handleImgError(this)" src="assets/videos/t3.webp" />
               <div class="hidden absolute inset-0 bg-surface" data-fallback="true"></div>
               <div class="absolute inset-0 bg-black/40 flex items-center justify-center group-hover:bg-black/20 transition-all">
                 <div class="w-12 h-12 rounded-full border border-white/30 bg-black/70 text-white flex items-center justify-center pl-0.5 group-hover:border-accent group-hover:text-accent transition-all">
@@ -551,7 +548,7 @@
           <!-- SMALL 3 — PAGEANT (opens on YouTube: embedding blocked by copyright claim) -->
           <div class="bento-card cursor-pointer group focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent" data-cursor="OPEN" role="button" tabindex="0" onclick="window.open('https://youtu.be/J3txaxGWAuU', '_blank', 'noopener')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}">
             <div class="relative aspect-video bg-card overflow-hidden flex items-center justify-center">
-              <img alt="PAGEANT — Behind the Runway thumbnail" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" decoding="async" onerror="handleImgError(this)" src="assets/videos/pageant.png" />
+              <img alt="PAGEANT — Behind the Runway thumbnail" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" decoding="async" onerror="handleImgError(this)" src="assets/videos/pageant.webp" />
               <div class="hidden absolute inset-0 bg-surface" data-fallback="true"></div>
               <div class="absolute inset-0 bg-black/40 flex items-center justify-center group-hover:bg-black/20 transition-all">
                 <div class="w-12 h-12 rounded-full border border-white/30 bg-black/70 text-white flex items-center justify-center pl-0.5 group-hover:border-accent group-hover:text-accent transition-all">
@@ -570,7 +567,7 @@
           <!-- SMALL 4 — PUNGKUAN -->
           <div class="bento-card cursor-pointer group focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent" data-video-id="zq7Xho1Rgks" role="button" tabindex="0" onclick="openVideoModal(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}">
             <div class="relative aspect-video bg-card overflow-hidden flex items-center justify-center">
-              <img alt="PUNGKUAN — Let's Take a Seat thumbnail" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" decoding="async" onerror="handleImgError(this)" src="assets/videos/chair.png" />
+              <img alt="PUNGKUAN — Let's Take a Seat thumbnail" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" decoding="async" onerror="handleImgError(this)" src="assets/videos/chair.webp" />
               <div class="hidden absolute inset-0 bg-surface" data-fallback="true"></div>
               <div class="absolute inset-0 bg-black/40 flex items-center justify-center group-hover:bg-black/20 transition-all">
                 <div class="w-12 h-12 rounded-full border border-white/30 bg-black/70 text-white flex items-center justify-center pl-0.5 group-hover:border-accent group-hover:text-accent transition-all">
@@ -796,9 +793,8 @@
             'assets/manipulation/FRESH STRAWBERRIES.webp',
             'assets/manipulation/JORDAN 1 RETRO AT IT_S FINEST.webp',
             'assets/manipulation/revenant Orange R mockup.webp',
-            'assets/manipulation/The Joberts.webp'
-            // Add the "Mutant Grip..." file here, using its full file name, e.g.
-            // ,'assets/manipulation/YOUR FULL FILE NAME.webp'
+            'assets/manipulation/The Joberts.webp',
+            'assets/manipulation/mutant-grip-ultra-distance-zero-excuses.webp'
           ]
         },
         photography: {
@@ -806,7 +802,6 @@
           targetHeight: 210,
           grayscale: true,
           photos: [
-            'assets/photography/Rider 2.webp',
             'assets/photography/1.webp',
             'assets/photography/2.webp',
             'assets/photography/3.webp',
@@ -819,8 +814,7 @@
             'assets/photography/enc-14.webp',
             'assets/photography/ran 3.webp',
             'assets/photography/ran 3 L.webp',
-            'assets/photography/enc-15.webp',
-            'assets/photography/pantalan.webp',
+            'assets/photography/enc-15.webp'
           ]
         }
       };

@@ -85,10 +85,7 @@
     const videoId = triggerEl.getAttribute('data-video-id');
     if (!videoModal || !videoIframe) return;
 
-    if (!videoId || videoId === 'YOUR_YOUTUBE_VIDEO_ID_HERE') {
-      alert('Paste your unlisted YouTube video ID into this card\'s data-video-id attribute!');
-      return;
-    }
+    if (!videoId) return;
 
     // Embed with autoplay and clean parameters
     videoIframe.src = `https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1`;
@@ -112,16 +109,11 @@
   // --- 6. Photography Lightbox Modal ---
   const photoModal = document.getElementById('photo-modal');
   const photoImg = document.getElementById('photo-modal-img');
-  const photoTitle = document.getElementById('photo-modal-title');
-  const photoCategory = document.getElementById('photo-modal-category');
 
-  window.openPhotoModal = function (src, title, category) {
+  window.openPhotoModal = function (src) {
     if (!photoModal || !photoImg) return;
 
     photoImg.src = src;
-    if (photoTitle) photoTitle.textContent = title || 'Artwork Still';
-    if (photoCategory) photoCategory.textContent = category || 'Exhibition Exposure';
-
     photoModal.classList.remove('hidden');
     document.body.style.overflow = 'hidden';
   };
@@ -147,25 +139,7 @@
     }
   });
 
-  // --- 7. Copy to Clipboard Utility ---
-  window.copyContact = function (text, btnElement) {
-    if (!navigator.clipboard || !btnElement) return;
-
-    navigator.clipboard.writeText(text).then(() => {
-      const originalHtml = btnElement.innerHTML;
-      btnElement.innerHTML = `<span>Copied!</span><span class="text-[#D97706]">✓</span>`;
-      btnElement.classList.add('border-[#D97706]/70');
-
-      setTimeout(() => {
-        btnElement.innerHTML = originalHtml;
-        btnElement.classList.remove('border-[#D97706]/70');
-      }, 2000);
-    }).catch(err => {
-      console.error('Copy failed:', err);
-    });
-  };
-
-  // --- 8. Safe Image Error Fallback Handler ---
+  // --- 7. Safe Image Error Fallback Handler ---
   window.handleImgError = function (imgEl) {
     if (!imgEl) return;
     imgEl.style.display = 'none';
