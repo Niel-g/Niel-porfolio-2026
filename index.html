@@ -59,10 +59,10 @@
   <!-- ==================== TAILWIND CSS (precompiled) ==================== -->
   <!-- Rebuilt with: npx tailwindcss@3 -c tailwind.config.js -i css/tailwind-input.css -o css/tailwind.css --minify
        (the old runtime CDN script was ~300 KB of JS and logged a production warning) -->
-  <link rel="stylesheet" href="css/tailwind.css" />
+  <link rel="stylesheet" href="css/tailwind.css?v=6" />
 
   <!-- Custom Stylesheet -->
-  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/styles.css?v=6" />
 
   <!-- ==================== WIDE PHOTO WALL STYLES ==================== -->
   <style>
@@ -786,10 +786,10 @@
   <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
-  <script defer src="js/motion.js"></script>
+  <script defer src="js/motion.js?v=6"></script>
 
   <!-- Application Script -->
-  <script src="js/main.js"></script>
+  <script src="js/main.js?v=6"></script>
 
   <!-- ============================================================ -->
   <!-- CONTACT COPY FUNCTION (independent of main.js)               -->
@@ -1191,6 +1191,7 @@
       var root = document.documentElement;
 
       function finishInstant() {
+        root.classList.remove('intro-pending');
         if (loader && loader.parentNode) loader.parentNode.removeChild(loader);
         window.__introDone = true;
         try { document.dispatchEvent(new CustomEvent('intro:done')); } catch (e) {}
@@ -1270,6 +1271,7 @@
         function cleanup() {
           if (cleaned) return;
           cleaned = true;
+          root.classList.remove('intro-pending');
           if (loader && loader.parentNode) loader.parentNode.removeChild(loader);
         }
         loader.addEventListener('animationend', function (e) {

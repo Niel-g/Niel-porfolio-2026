@@ -40,9 +40,20 @@
     // Flip as About's top edge rises past ~65% of the viewport — the light
     // then carries through Contact to the end of the page; flip back when
     // it sinks below the same line while scrolling up.
+    // Direction-aware flip: isIntersecting alone would flip BACK to dark at
+    // max scroll — About scrolls fully above the viewport there (Contact +
+    // footer are shorter than the screen), so the observer reports "gone"
+    // and the theme reverted right at the end of the page. So when the
+    // section leaves the band, only go dark if it left DOWNWARD (its top
+    // sank below the flip line = we scrolled back up); if it left upward
+    // (scrolled past the viewport top), stay light to the end of the page.
     var themeFlip = new IntersectionObserver(function (entries) {
       entries.forEach(function (en) {
-        setTheme(en.isIntersecting);
+        if (en.isIntersecting) {
+          setTheme(true);
+        } else if (en.rootBounds) {
+          setTheme(en.boundingClientRect.bottom < 0);
+        }
       });
     }, { rootMargin: '0px 0px -35% 0px', threshold: 0 });
     themeFlip.observe(aboutEl);
