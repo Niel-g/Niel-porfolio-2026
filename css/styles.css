@@ -414,6 +414,13 @@ html.theme-light #about .border-bordercol,
 html.theme-light #contact .border-bordercol,
 html.theme-light footer .border-bordercol { border-color: #E2DCD2; }
 
+/* The fixed header overlays the light zone, so it flips with the theme —
+   these only ever apply while .theme-light is active */
+html.theme-light #site-header .text-primaryText { color: #17150F; }
+html.theme-light #site-header .text-secondaryText { color: #5B564D; }
+html.theme-light #site-header .hover\:text-accent:hover { color: #B45309; }
+html.theme-light #site-header .hover\:text-white:hover { color: #17150F; }
+
 /* Header + mobile nav stay readable over cream */
 html.theme-light .header-glass {
   background-color: rgba(244, 241, 234, 0.85);

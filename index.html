@@ -62,7 +62,7 @@
   <link rel="stylesheet" href="css/tailwind.css?v=6" />
 
   <!-- Custom Stylesheet -->
-  <link rel="stylesheet" href="css/styles.css?v=6" />
+  <link rel="stylesheet" href="css/styles.css?v=7" />
 
   <!-- ==================== WIDE PHOTO WALL STYLES ==================== -->
   <style>
@@ -306,12 +306,14 @@
     .cursor-ring.has-label .cursor-label { opacity: 1; }
 
     /* ==================== LIGHT FINALE (About → Contact → footer) ==================== */
-    html.theme-light .contact-card { background-color: #FBFAF7; border-color: #E2DCD2; }
-    html.theme-light .contact-label { color: #6B6459; }
-    html.theme-light .contact-value { color: #17150F; }
-    html.theme-light a.contact-value:hover { color: #B45309; }
-    html.theme-light .contact-btn { background-color: #FFFFFF; border-color: #E2DCD2; color: #5B564D; }
-    html.theme-light .contact-btn svg { color: #B45309; }
+    /* #contact prefix is required: the dark rules above carry an ID, so
+       plain html.theme-light selectors would lose the specificity battle */
+    html.theme-light #contact .contact-card { background-color: #FBFAF7; border-color: #E2DCD2; }
+    html.theme-light #contact .contact-label { color: #6B6459; }
+    html.theme-light #contact .contact-value { color: #17150F; }
+    html.theme-light #contact a.contact-value:hover { color: #B45309; }
+    html.theme-light #contact .contact-btn { background-color: #FFFFFF; border-color: #E2DCD2; color: #5B564D; }
+    html.theme-light #contact .contact-btn svg { color: #B45309; }
     html.theme-light #contact .contact-btn:hover { background-color: #F4F1EA; color: #17150F; border-color: #B45309; }
   </style>
 </head>
